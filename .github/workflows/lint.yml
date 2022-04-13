@@ -35,11 +35,13 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install pyright
+      - name: Run pyright
         uses: jakebailey/pyright-action@v1
         with:
           version: 1.1.135
           python-version: ${{ matrix.python-version }}
+          project: "./"
+          lib: true
 
       - name: Run black
         if: ${{ always() && steps.install-deps.outcome == 'success' }}
